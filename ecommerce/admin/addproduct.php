@@ -1,0 +1,94 @@
+<?php 
+include_once ("./components/header.php");
+require_once ("../config/connection.php");
+
+?>
+     <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">
+          Add new product
+            </h3>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+ <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Product Form</h4>
+                  <p class="card-description">
+                   Enter product details
+                  </p>
+                  <form class="forms-sample" method="post">
+                    <div class="form-group">
+                      <label for="title">Title</label>
+                      <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                    </div>
+                   
+                
+ <div class="form-gro`up">
+                      <label for="price">price</label>
+                      <input type="number" class="form-control" id="price" name="price" placeholder="price">
+                    </div>
+
+                     <div class="form-group">
+                      <label for="stock">stock</label>
+                      <input type="number" class="form-control" id="stock" name="stock" placeholder="stock">
+                    </div>
+                       <div class="form-group">
+                      <label for="image">image</label>
+                      <input type="text" class="form-control" id="image" name="image" placeholder="image">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Categories">Categories</label>
+                        <select class="form-control" id="Categories" name="cat_id">
+                          <option value="1">Electronics</option>
+                          <option value="2">Home Decors</option>
+                        </select>
+                      </div>
+                    <!-- <div class="form-group">
+                      <label>File upload</label>
+                      <input type="file" name="img[]" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                      </div>
+                    </div> -->
+                   
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Textarea</label>
+                      <textarea class="form-control" name="description" id="exampleTextarea1" rows="4"></textarea>
+                    </div>
+                    <button type="submit" name="addProduct" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    <?php 
+include_once ("./components/footer.php");
+
+
+?>
+  <script src="./js/data-table.js"></script>
