@@ -88,7 +88,27 @@ require_once ("../config/connection.php");
       <!-- main-panel ends -->
     <?php 
 include_once ("./components/footer.php");
+if(isset($_POST['addProduct'])){
+  $title = $_POST['title'];
+  $price = $_POST['price'];
+  $stock = $_POST['stock'];
+  $image = $_POST['image'];
+  $description = $_POST['description'];
+  $cat_id = $_POST['cat_id'];
 
+
+  $addProduct="INSERT INTO `products`( `title`, `description`, `price`, `stock`, `image`, `cat_id`) VALUES ('$title','$description','$price','$stock','$image','$cat_id')";
+  $result= mysqli_query($conn, $addProduct);
+  if ($result) {
+    echo "<script>alert('Product Added Successfully')
+location.href='./products.php'
+  </script>";
+
+  } else {
+  echo "<script>alert('Failed to add a product right now..!')
+  </script>";
+  }
+}
 
 ?>
   <script src="./js/data-table.js"></script>

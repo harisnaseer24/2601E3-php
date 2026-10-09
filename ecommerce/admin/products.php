@@ -49,7 +49,7 @@ if (mysqli_num_rows($result)  > 0) {
                             <td> <?php echo $row['description'] ?></td>
                             <td> <?php echo $row['price'] ?></td>
                             <td> <?php echo $row['stock'] ?></td>
-                            <td> <?php echo $row['image'] ?></td>
+                            <td> <img src="<?php echo $row['image'] ?>" alt="" class="rounded-circle" height="80"></td>
                             <td> <?php echo $row['cat_id'] ?></td>
                             <td> <?php echo $row['created_at'] ?></td>
                           
