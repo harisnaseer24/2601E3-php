@@ -21,7 +21,7 @@ require_once ("../config/connection.php");
                   <p class="card-description">
                    Enter product details
                   </p>
-                  <form class="forms-sample" method="post">
+                  <form class="forms-sample" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="title">Title</label>
                       <input type="text" class="form-control" id="title" name="title" placeholder="title">
@@ -37,28 +37,43 @@ require_once ("../config/connection.php");
                       <label for="stock">stock</label>
                       <input type="number" class="form-control" id="stock" name="stock" placeholder="stock">
                     </div>
-                       <div class="form-group">
+                       <!-- <div class="form-group">
                       <label for="image">image</label>
                       <input type="text" class="form-control" id="image" name="image" placeholder="image">
-                    </div>
+                    </div> -->
+
+
+
+
+
 
                     <div class="form-group">
                       <label for="Categories">Categories</label>
                         <select class="form-control" id="Categories" name="cat_id">
-                          <option value="1">Electronics</option>
-                          <option value="2">Home Decors</option>
+                          <?php 
+$getCategories="SELECT * FROM `categories`";
+$getCategoriesResult= mysqli_query($conn,$getCategories);
+
+while ($row = mysqli_fetch_assoc($getCategoriesResult)) {
+$catId=$row['cat_id'];
+$catName=$row['cat_name'];
+
+
+echo "<option value='$catId'>$catName</option>";
+}
+?>   
                         </select>
                       </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                       <label>File upload</label>
-                      <input type="file" name="img[]" class="file-upload-default">
+                      <input type="file" name="img" class="file-upload-default">
                       <div class="input-group col-xs-12">
                         <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>
                       </div>
-                    </div> -->
+                    </div>
                    
                     <div class="form-group">
                       <label for="exampleTextarea1">Textarea</label>
@@ -92,15 +107,32 @@ if(isset($_POST['addProduct'])){
   $title = $_POST['title'];
   $price = $_POST['price'];
   $stock = $_POST['stock'];
-  $image = $_POST['image'];
+  // $image = $_POST['image'];
   $description = $_POST['description'];
   $cat_id = $_POST['cat_id'];
+$valid_types=["image/png","image/jpeg","image/jpg","image/webp","image/jfif","image/gif"];
 
+  if($_FILES['img']['error'] == 4){
+    echo "<script>alert('Please select an image first.')
+  </script>";
+  }
+  if($_FILES['img']['size'] > 200000){
+    echo "<script>alert('File size too large. Please upload image under 2 MB')
+  </script>";
+  }
+  if(!in_array($_FILES['img']['type'],$valid_types)){
+    echo "<script>alert('Invalid File Type')
+  </script>";
+  }
 
-  $addProduct="INSERT INTO `products`( `title`, `description`, `price`, `stock`, `image`, `cat_id`) VALUES ('$title','$description','$price','$stock','$image','$cat_id')";
+$imageName = $_FILES['img']['name'];
+
+  $addProduct="INSERT INTO `products`( `title`, `description`, `price`, `stock`, `image`, `cat_id`) VALUES ('$title','$description','$price','$stock','$imageName','$cat_id')";
   $result= mysqli_query($conn, $addProduct);
   if ($result) {
-    echo "<script>alert('Product Added Successfully')
+move_uploaded_file($_FILES['img']['tmp_name'], "uploads/".$imageName);
+
+echo "<script>alert('Product Added Successfully')
 location.href='./products.php'
   </script>";
 
@@ -111,4 +143,4 @@ location.href='./products.php'
 }
 
 ?>
-  <script src="./js/data-table.js"></script>
+  <script src="./js/file-upload.js"></script>
