@@ -49,15 +49,14 @@ if (mysqli_num_rows($result)  > 0) {
                             <td> <?php echo $row['description'] ?></td>
                             <td> <?php echo $row['price'] ?></td>
                             <td> <?php echo $row['stock'] ?></td>
-                            <td> <img src="<?php echo $row['image'] ?>" alt="" class="rounded-circle" height="80"></td>
+                            <td> <img src="./uploads/<?php echo $row['image'] ?>" alt="" class="rounded-circle" height="80"></td>
                             <td> <?php echo $row['cat_id'] ?></td>
                             <td> <?php echo $row['created_at'] ?></td>
                           
+                            
                             <td>
-                              <label class="badge badge-info">On hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
+                              <!-- //query parameter -->
+                              <a href="./delete.php?id=<?php echo $row['product_id'] ?>" class="btn btn-outline-primary">DELETE</a>
                             </td>
                         </tr>
  <?php

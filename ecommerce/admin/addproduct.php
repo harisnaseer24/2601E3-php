@@ -116,14 +116,16 @@ $valid_types=["image/png","image/jpeg","image/jpg","image/webp","image/jfif","im
     echo "<script>alert('Please select an image first.')
   </script>";
   }
-  if($_FILES['img']['size'] > 200000){
+  elseif($_FILES['img']['size'] > 200000){
     echo "<script>alert('File size too large. Please upload image under 2 MB')
   </script>";
   }
-  if(!in_array($_FILES['img']['type'],$valid_types)){
+  elseif(!in_array($_FILES['img']['type'],$valid_types)){
     echo "<script>alert('Invalid File Type')
   </script>";
   }
+else{
+
 
 $imageName = $_FILES['img']['name'];
 
@@ -139,6 +141,7 @@ location.href='./products.php'
   } else {
   echo "<script>alert('Failed to add a product right now..!')
   </script>";
+  }
   }
 }
 
