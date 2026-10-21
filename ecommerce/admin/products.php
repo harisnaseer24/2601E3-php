@@ -30,6 +30,7 @@ require_once ("../config/connection.php");
                             <th>Category</th>
                             <th>Created at</th>
                             <th>Actions</th>
+                            <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -56,7 +57,13 @@ if (mysqli_num_rows($result)  > 0) {
                             
                             <td>
                               <!-- //query parameter -->
-                              <a href="./delete.php?id=<?php echo $row['product_id'] ?>" class="btn btn-outline-primary">DELETE</a>
+                              <a href="./delete.php?id=<?php echo $row['product_id'] ?>" class="btn btn-outline-danger">DELETE</a>
+                              
+                            </td>
+                              <td>
+                              <!-- //query parameter -->
+                              <a href="./update.php?id=<?php echo $row['product_id'] ?>" class="btn btn-outline-primary">Update</a>
+                              
                             </td>
                         </tr>
  <?php
