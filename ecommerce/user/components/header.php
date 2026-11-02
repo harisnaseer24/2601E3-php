@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     
@@ -73,9 +77,24 @@
                                             <div class="ht-setting-trigger"><span>Setting</span></div>
                                             <div class="setting ht-setting">
                                                 <ul class="ht-setting-list">
-                                                    <li><a href="login-register.html">My Account</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="login-register.html">Sign In</a></li>
+
+                                                <?php 
+                                                if (!isset($_SESSION['role'] )) {
+                                                  ?>
+                                                  
+                                                    <li><a href="./login.php">Sign In</a></li>
+                                                  <?php
+                                                } else {
+                                                   ?>
+                                                   <li><a href="./login.php">My Account</a></li>
+                                                    <li><a href="./logout.php">Logout</a></li>
+                                                   <?php
+                                                }
+                                                
+                                                ?>
+                                                    
+                                                    <!-- <li><a href="checkout.html">Checkout</a></li> -->
+                                                  
                                                 </ul>
                                             </div>
                                         </li>
