@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2026 at 12:21 PM
+-- Generation Time: Nov 06, 2026 at 12:16 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -57,21 +57,40 @@ CREATE TABLE `products` (
   `stock` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `cat_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `title`, `description`, `price`, `stock`, `image`, `cat_id`, `created_at`) VALUES
-(1, 'Refrigerator', 'Thanda krta ha', 250000, 50, 'refrigerator.png', 1, '2026-10-02 15:19:37'),
-(2, 'Curtains', 'Good quality fabric', 15000, 6000, 'curtains.png', 2, '2026-10-02 15:42:51'),
-(3, 'Samsung Galaxy S26 Ultra', '6.9 inches\r\nDisplay\r\nram-specs-image\r\n12GB\r\nRAM\r\nbattery-specs-image\r\n5000 mAh\r\nBattery\r\nbackcamera-specs-image\r\n200.0 MP + 50.0 MP + 50.0 MP + 10.0 MP\r\nBack Camera', 390995, 600, 'https://images.priceoye.pk/samsung-galaxy-s26-ultra-pakistan-priceoye-x43oo-500x500.webp', 1, '2026-10-07 15:37:51'),
-(4, 'adf', 'fgfdg', 343, 544, 'image.png', 4, '2026-10-12 15:57:58'),
-(5, 'df', 'ewe', 3, 5, 'image.png', 2, '2026-10-12 16:02:29'),
-(6, 'df', 'dfds', 3, 2, 'image.png', 2, '2026-10-12 16:04:11'),
-(7, 'df', 'dfds', 3, 2, 'banner.jpg', 2, '2026-10-12 16:12:08');
+INSERT INTO `products` (`product_id`, `title`, `description`, `price`, `stock`, `image`, `cat_id`, `created_at`, `status`) VALUES
+(7, 'Apple iPhone Duo', '                        OS\r\niOS 27\r\nUI\r\niOS 27 with foldable multitasking\r\nRelease Date\r\n2026-09-09\r\nPTA Approved\r\nYes\r\nSim Type\r\neSIM + eSIM\r\n5G Support\r\nYes                      ', 900000, 251, 'iphone-18-duo-price-in-pakistan.png', 1, '2026-10-12 16:12:08', 1),
+(8, 'Samsung Galaxy S26 Ultra', 'Samsung Galaxy S26 Ultra does not include travel adapter.', 387495, 498, 's26.png', 1, '2026-11-06 15:30:03', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','user') NOT NULL DEFAULT 'user',
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `role`, `created_at`) VALUES
+(2, 'Ashar', 'ashar@aptechnorth.edu.pk', '$2y$10$.hcymSHHWHm4GVAxI3tKf.DD7qS1jIou4XVn1lLzBP6v05910URDG', 'user', '2026-10-26 16:38:30'),
+(3, 'haris', 'haris_naseer@aptechnorth.edu.pk', '$2y$10$vhzV3HzD//D6tIhgsZL/9.oS6S0cqjUd9rDyw7kqUAzx7zUBta4zC', 'admin', '2026-10-30 15:35:38');
 
 --
 -- Indexes for dumped tables
@@ -91,6 +110,13 @@ ALTER TABLE `products`
   ADD KEY `cat_id` (`cat_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -104,7 +130,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
