@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2026 at 12:16 PM
+-- Generation Time: Nov 11, 2026 at 12:44 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -67,7 +67,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`product_id`, `title`, `description`, `price`, `stock`, `image`, `cat_id`, `created_at`, `status`) VALUES
 (7, 'Apple iPhone Duo', '                        OS\r\niOS 27\r\nUI\r\niOS 27 with foldable multitasking\r\nRelease Date\r\n2026-09-09\r\nPTA Approved\r\nYes\r\nSim Type\r\neSIM + eSIM\r\n5G Support\r\nYes                      ', 900000, 251, 'iphone-18-duo-price-in-pakistan.png', 1, '2026-10-12 16:12:08', 1),
-(8, 'Samsung Galaxy S26 Ultra', 'Samsung Galaxy S26 Ultra does not include travel adapter.', 387495, 498, 's26.png', 1, '2026-11-06 15:30:03', 0);
+(8, 'Samsung Galaxy S26 Ultra', 'Samsung Galaxy S26 Ultra does not include travel adapter.', 387495, 498, 's26.png', 1, '2026-11-06 15:30:03', 1);
 
 -- --------------------------------------------------------
 
