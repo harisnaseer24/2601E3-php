@@ -80,11 +80,15 @@ $product= mysqli_fetch_assoc($getProductResult);
                                     </div>
                                    
                                     <div class="single-add-to-cart">
-                                        <form action="#" class="cart-quantity">
+                                        <form action="./add-to-cart.php" class="cart-quantity" method="post">
+
+
+                                        <input type="hidden" name="product_id" value="<?= $product['product_id']?>">
+                                        <input type="hidden" name="price" value="<?= $product['price']?>">
                                             <div class="quantity">
                                                 <label>Quantity</label>
                                                 <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="1" type="text">
+                                                    <input class="cart-plus-minus-box" value="1" type="text" name="qty">
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
