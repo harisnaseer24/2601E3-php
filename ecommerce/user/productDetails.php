@@ -43,7 +43,7 @@ $product= mysqli_fetch_assoc($getProductResult);
                                 <div class="product-details-images slider-navigation-1">
                                     <div class="lg-image">
                                         <a class="popup-img venobox vbox-item" href="images/product/large-size/1.jpg" data-gall="myGallery">
-                                            <img src="<?= $product['image']?>" alt="product image">
+                                            <img src="../admin/uploads/<?= $product['image']?>" alt="product image">
                                         </a>
                                     </div>
                                    
