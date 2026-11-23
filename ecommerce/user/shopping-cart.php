@@ -90,7 +90,7 @@ if (mysqli_num_rows($getCartResult) > 0) {
 
                                                 <li>Delivery Charges <span>Rs. 1200</span></li>
 
-                                                <li>Total <span><?php echo $grandTotal-1200; ?></span></li>
+                                                <li>Total <span>Rs. <?php echo $grandTotal+1200; ?></span></li>
                                             </ul>
                                             <a href="./checkout.php">Proceed to checkout</a>
                                         </div>
